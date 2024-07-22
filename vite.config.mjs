@@ -34,7 +34,7 @@ export default defineConfig({
     }),
   ],
   define: { 'process.env': {} },
-  base:'/cueSetting/',
+  base:'/dist/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
