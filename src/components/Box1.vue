@@ -12,6 +12,11 @@
         </el-input>
       </v-col>
       <v-col cols="6">
+        <el-tag type="info" effect="plain" class="mr-1">B</el-tag>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="6">
         <el-input
           v-model="input1"
           style="max-width: 600px"
@@ -20,6 +25,12 @@
         >
           <template #prepend>評估單號</template>
         </el-input>
+      </v-col>
+      <v-col cols="6">
+        <el-tag type="primary" class="mr-1">Tag 1</el-tag>
+        <el-tag type="success" class="mr-1">Tag 2</el-tag>
+        <el-tag type="info" class="mr-1">Tag 3</el-tag>
+        <el-tag type="warning" class="mr-1">Tag 4</el-tag>
       </v-col>
     </v-row>
     <v-row>
@@ -65,7 +76,8 @@
         <el-input v-model="input1" placeholder="Please input" size="small">
           <template #prepend> 材料名稱 </template>
           <template #append>
-            <el-button :icon="Search" />
+            材料
+            <!-- <el-button :icon="Search" /> -->
           </template>
         </el-input>
       </v-col>
@@ -120,22 +132,23 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="4">
-        <el-checkbox v-model="checked5" label="補檔序" />
+      <v-col cols="3" style="padding: 0px 10px">
+        <el-checkbox v-model="checked5" label="每十秒" />
       </v-col>
-      <v-col cols="4">
-        <el-checkbox v-model="checked5" label="補檔序" />
+      <v-col cols="3" style="padding: 0px 10px">
+        <el-checkbox v-model="checked5" label="檔購看事後" />
       </v-col>
-      <v-col cols="4">
-        <el-checkbox v-model="checked5" label="補檔序" />
+      <v-col cols="3" style="padding: 0px 10px">
+        <el-checkbox v-model="checked5" label="已買到" />
+      </v-col>
+      <v-col cols="3" style="padding: 0px 10px">
+        <el-checkbox v-model="checked5" label="合看已買到" />
       </v-col>
     </v-row>
   </v-col>
 </template>
 
-<script setup>
-import { Search } from "@element-plus/icons-vue";
-</script>
+<script setup></script>
 <style scoped>
 .fill-height {
   height: 100%;

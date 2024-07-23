@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row class="mt-15">
+    <v-row class="mt-1">
       <v-col cols="4" justify-content="left" style="display: flex">
         <el-button size="large">查詢</el-button>
         <h5 class="ml-5 mt-2 pl-2 pr-2 bg-green-accent-1" style="height: 20px">
