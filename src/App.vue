@@ -29,19 +29,19 @@
 </template>
 
 <script setup>
-//import { onMounted } from "vue";
-//import { useRouter } from "vue-router";
-//const router = useRouter();
+import { onMounted } from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
 //
 document.getElementsByTagName("html")[0].className = "dark";
 
-// const linkTo = () => {
-//   router.push("./");
-// };
+const linkTo = () => {
+  router.push("/");
+};
 
-// onMounted(() => {
-//   linkTo();
-// });
+onMounted(() => {
+  linkTo();
+});
 </script>
 
 <style scoped lang="scss">
