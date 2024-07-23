@@ -3,11 +3,15 @@
     <v-main>
       <v-navigation-drawer width="255">
         <v-list-item>
-          <v-icon>mdi-home</v-icon>
+          <v-icon link>mdi-home</v-icon>
         </v-list-item>
         <v-divider></v-divider>
-        <v-list-item link><v-icon>mdi-pencil</v-icon>事後評估作業</v-list-item>
-        <v-list-item link><v-icon>mdi-pencil</v-icon>補CUE處理作業</v-list-item>
+        <v-list-item link :to="{ name: '/' }"
+          ><v-icon>mdi-pencil</v-icon>事後評估作業</v-list-item
+        >
+        <v-list-item link :to="{ name: '/cue' }"
+          ><v-icon>mdi-pencil</v-icon>補CUE處理作業</v-list-item
+        >
         <v-list-item link><v-icon>mdi-pencil</v-icon>報表作業1</v-list-item>
         <v-list-item link><v-icon>mdi-pencil</v-icon>報表作業2</v-list-item>
         <v-list-item link
@@ -25,7 +29,6 @@
 </template>
 
 <script setup>
-//
 document.getElementsByTagName("html")[0].className = "dark";
 </script>
 

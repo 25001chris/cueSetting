@@ -286,7 +286,7 @@
       </el-table>
     </el-drawer>
     <v-dialog v-model="dialogVisible" title="Dialog Title">
-      <material-setting />
+      <material-setting @closeDialogVisible="closeDialogVisible" />
     </v-dialog>
   </v-container>
 </template>
@@ -329,6 +329,11 @@ const test3 = (row) => {
 
 const tableRowClassName = ({ row, rowIndex }) => {
   row.index = rowIndex;
+};
+
+const closeDialogVisible = () => {
+  console.log("close");
+  dialogVisible.value = false;
 };
 
 const openMaterialList = (row) => {

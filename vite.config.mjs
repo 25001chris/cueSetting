@@ -4,6 +4,7 @@ import Vue from '@vitejs/plugin-vue'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import ViteFonts from 'unplugin-fonts/vite'
 import VueRouter from 'unplugin-vue-router/vite'
+import Legacy from '@vitejs/plugin-legacy'
 
 // Utilities
 import { defineConfig } from 'vite'
@@ -32,9 +33,13 @@ export default defineConfig({
         }],
       },
     }),
+    Legacy({
+      targets: ['defaults', 'ie>=11'],
+      additionalLegacyPolyfills: ['regenerator-runtime/runtime']
+    })
   ],
   define: { 'process.env': {} },
-  base:'/dist/',
+  base:'./',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

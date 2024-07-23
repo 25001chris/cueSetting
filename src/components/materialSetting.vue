@@ -55,6 +55,13 @@
           <el-button type="primary" size="small" class="ml-5 mt-1"
             >存檔</el-button
           >
+          <el-button
+            type="default"
+            size="small"
+            class="ml-5 mt-1"
+            @click="close"
+            ><v-icon>mdi-close</v-icon></el-button
+          >
         </v-col>
       </v-row>
       <v-row>
@@ -90,6 +97,7 @@
 
 <script setup>
 //import { ref, defineProps } from "vue";
+const emit = defineEmits(["closeDialogVisible"]);
 const tableData = [
   {
     item1: "全國電子-家的生成式 7月空調九折 日立(SF202-17)",
@@ -215,6 +223,11 @@ const options = [
     label: "Option5",
   },
 ];
+
+const close = () => {
+  console.log("close");
+  emit("closeDialogVisible", true);
+};
 </script>
 
 <style scoped lang="scss"></style>
