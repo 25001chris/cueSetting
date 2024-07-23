@@ -3,7 +3,7 @@
     <v-main>
       <v-navigation-drawer width="255">
         <v-list-item>
-          <v-icon link>mdi-home</v-icon>
+          <v-icon link :to="{ name: '/' }">mdi-home</v-icon>
         </v-list-item>
         <v-divider></v-divider>
         <v-list-item link :to="{ name: '/' }"
@@ -29,7 +29,19 @@
 </template>
 
 <script setup>
+import { onMounted } from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
+//
 document.getElementsByTagName("html")[0].className = "dark";
+
+const linkTo = () => {
+  router.push("./");
+};
+
+onMounted(() => {
+  linkTo();
+});
 </script>
 
 <style scoped lang="scss">
