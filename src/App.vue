@@ -83,9 +83,9 @@ const menuItems = ref([
     title: "事後評估作業",
     active: false,
     subMenuItems: [
-      { title: "排期多筆轉單", link: "/" },
-      { title: "事後評估維護", link: "/" },
-      { title: "數字匯入", link: "/" },
+      { title: "排期多筆轉單", link: "/multiToRun" },
+      { title: "事後評估維護", link: "/afterEvaluate" },
+      { title: "數字匯入", link: "/numberImport" },
     ],
   },
 ]);

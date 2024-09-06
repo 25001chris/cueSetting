@@ -1,0 +1,388 @@
+// vuetify 顏色參考：https://vuetifyjs.com/en/styles/colors/#material-colors
+
+html * {
+  font-family: "微軟正黑體修正", "微軟正黑體", "Microsoft JhengHei", "STHeiti", "PMingLiU", "新細明體", "MingLiU","DFKai-sb", Arial, Helvetica, FreeSans, sans-serif !important;
+  font-weight:bold  !important;
+}
+
+// 修改 CommonRadioButton label 與 radioButton 為水平排列
+// 移除 radio button 在水平排列時上方的間隙
+// 使用方式：class="commonRadioButton"
+.commonRadioButton  {
+  .v-input__control {
+    flex-direction: row !important;
+  }
+  .v-selection-control-group--inline {
+    margin-top: 0 !important;
+  }
+}
+
+// 將 Vuetify disabled 元件的上一層父元素游標改為禁用樣式
+*:has(> .v-input--disabled) {
+  cursor: not-allowed !important;
+}
+
+// 將 Vuetify readonly 元件內的子元素 input 游標改為禁用樣式
+*:has(> .v-input--readonly) {
+  input {
+    cursor: not-allowed !important;
+  }
+}
+
+// 修改 Vuetify disabled 樣式
+.v-input--disabled {
+  .v-input__prepend, .v-field--disabled, .v-input__details{
+    opacity: 1 !important;
+  }
+  .v-field--disabled, .v-selection-control-group {
+    background-color: rgb(var(--v-theme-disableInput)) !important;
+  }
+}
+
+// 修改 Vuetify readonly 樣式
+.v-input--readonly {
+  input {
+    background-color: rgb(var(--v-theme-disableInput)) !important;
+  }
+}
+
+// 統一 v-table 表頭樣式
+.v-table {
+  thead th {
+    background-color: rgb(var(--v-theme-tableHeaderBackground)) !important;
+    color: rgb(var(--v-theme-tableHeaderText)) !important;
+    text-align: center;
+  }
+}
+
+// 修改共用元件 label 文字為 vuetify 紅色
+// 使用方式：class="commonComponentRedLabel"
+.commonComponentRedLabel {
+  .span-label {
+    color: rgb(var(--v-theme-commonRedColor)) !important;
+  }
+}
+
+// 在 v-text-field 套用 class 可使文字水平置中
+// 使用方式：class="text-field-center"
+.text-field-center {
+  &.v-text-field input {
+    text-align: center;
+  }
+}
+
+// 在 v-text-field 套用 class 可使用 ... 省略字元樣式
+// 使用方式：class="text-field-ellipsis"
+.text-field-ellipsis {
+  &.v-text-field input {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+// 在 v-text-field 套用 class 可在 disabled 狀態下將錯誤樣式調整一致
+// 使用方式：class="text-field-disabled-error"
+.text-field-error-style {
+  &.v-input--error {
+  .v-field--error,
+    .v-input__details {
+        color: rgb(var(--v-theme-error)) !important;
+      }
+  }
+}
+
+.el-header-table {
+  background-color:  rgb(var(--v-theme-tableHeaderBackground)) !important;
+  font-weight: bold !important;
+  color: black !important;
+}
+
+.el_table_sort{
+  text-decoration:underline !important;
+  color:rgb(var(--v-theme-tableHeaderSortText)) !important;
+}
+
+// 修改element ui table顏色
+// 使用方式：class="selected-row-color" 或 JS color = 'selected-row-color'
+.el-table .selected-row-color {
+  background-color:  rgb(var(--v-theme-tableRowSelected)) !important;
+}
+/*Tags1 --> 这一行样式针对的是操作列中没有进行【fixed】的表格，覆盖hover-row的颜色，实现选中行即添加背景色*/
+.el-table--enable-row-hover .el-table__body tr.selected-row-color:hover > td {
+  background-color:  rgb(var(--v-theme-tableRowSelected)) !important;
+}
+/* Tabs2 --> 这两行样式针对的是操作列中存在进行【fixed】固定的表格，强制覆盖hover-row的颜色*/
+.el-table__body-wrapper .el-table__body tr.selected-row-color.hover-row > td {
+  background-color:  rgb(var(--v-theme-tableRowSelected)) !important;
+}
+//複寫 element ui table fixed(凍結窗格) 
+.el-table__fixed-body-wrapper
+  .el-table__body
+  tr.selected-row-color.hover-row
+  > td {
+    background-color:  rgb(var(--v-theme-tableRowSelected)) !important;
+}
+//element ui table 點擊某一列變色
+ .el-table__body tr.current-row > td {
+  background-color:  rgb(var(--v-theme-tableRowSelected)) !important;
+}
+.dark{
+    // 空狀態顏色
+    .el-empty {
+      background-color: #4b4b52 !important;
+      --el-empty-fill-color-0: var(--el-color-black) !important;
+      --el-empty-fill-color-1: #4b4b52 !important;
+      --el-empty-fill-color-2: #36383d !important;
+      --el-empty-fill-color-3: #1e1e20 !important;
+      --el-empty-fill-color-4: #8d8d8d !important;
+      --el-empty-fill-color-5: #202124 !important;
+      --el-empty-fill-color-6: #8d8d8d !important;
+      --el-empty-fill-color-7: #1b1c1f !important;
+      --el-empty-fill-color-8: #1c1d1f !important;
+      --el-empty-fill-color-9: #18181a !important;
+    }
+    // 檔次設定表格樣式
+    .minTable{
+      tr,th{
+        background: black !important;
+        color: white !important;
+      }
+      th{
+        &.weekend,&.active {
+          background:  rgb(var(--v-theme-deleteButton)) !important;
+        }
+      }
+      td{
+        color:rgb(var(--v-theme-defaultTaxtColor)) !important;
+        input{
+          color: black;
+        }
+        &.programName,&.noActive{
+          background: black !important;
+          color: white !important;
+        }
+        &.weekend,&.active {
+          background: rgb(var(--v-theme-deleteButton)) !important;
+          color:rgb(var(--v-theme-defaultTaxtColor)) !important;
+        }
+        &.defaultColumn{
+          background-color: #000;
+          color:rgb(var(--v-theme-defaultTaxtColor)) !important;
+        }
+        &.disabled{
+          background:rgb(var(--v-theme-toolbarBgColor)) !important;
+        }
+      }
+      tr:last-child{
+        td{
+          background: black !important;
+          color: white !important;
+        }
+      }
+      .all{
+        background: black !important;
+        color: white !important;
+      }
+    }
+}
+
+// 提示文字顏色
+.tipsTextColor {
+  color: rgb(var(--v-theme-tipsTextColor));
+}
+// 錯誤文字顏色
+.errorTipsTextColor {
+  color: rgb(var(--v-theme-tipsColor));
+}
+
+// 彈出視窗背景顏色
+.dialogBg{
+  background-color: rgb(var(--v-theme-dialogBgColor)) !important;
+}
+
+
+// ELEMENT-UI checkbox 樣式
+.el-checkbox__input{
+  .el-checkbox__inner{
+    border: 1px solid rgb(var(--v-theme-checkBoxBorderColor)) !important;
+    background-color: white !important
+  }
+  &.is-checked{
+    .el-checkbox__inner::after {
+      border-color: black !important;
+    }
+  } 
+  &.is-indeterminate{
+    .el-checkbox__inner::before {
+      background-color: black !important;
+    }
+  }
+  &.is-disabled{
+    .el-checkbox__inner{
+      background-color: lightgrey !important;
+      border: 1px solid darkgray !important;
+      color: rgb(var(--v-theme-checkBoxBorderColor)) !important;
+    }
+    // &.is-checked{
+    //   .el-checkbox__inner::after {
+    //     border-color: black !important;
+    //   }
+    // } 
+  }
+}
+
+// 修改element ui form-item 制定表單欄位高度56px
+.el-form-item__content{
+  .el-input__wrapper{
+    height: 56px;
+    line-height: 56px;
+    box-shadow: 0px 0px 0px 1px darkgray!important;
+  }
+}
+// 修改element ui label 高度對應Form表單欄位高度 文字置中
+.el-form-item__label{
+  justify-content: center;
+  line-height:56px;
+}
+// 修改element ui 取消element ui scroller Bar樣式
+.el-scrollbar__bar.is-horizontal {
+  height: 15px;
+  left: 2px;
+  display: block !important;
+  opacity: 1 !important;
+}
+
+.el-scrollbar__bar.is-vertical {
+  display: block !important;
+  width:15px;
+}
+
+.el-scrollbar__bar.is-vertical>div {
+  opacity: 0.6 !important;
+}
+
+.el-empty__description>p{
+  color:#ec808d !important;
+  font-size: 24px !important;
+  font-weight: bolder !important;
+}
+
+
+// 強制讓 element ui messageBox 位於最上層 
+.el-messagebox-force-top {
+  @at-root {
+    .el-overlay {
+      z-index: 9999 !important;
+    }
+  }
+}
+
+// 修改 element ui messageBox 背景顏色
+.el-messagebox-bg {
+  background-color: rgb(var(--v-theme-messageToolBg)) !important;
+}
+
+// 當INPUT為DISABLE時，設定背景顏色/文字顏色/邊框顏色
+.errorNotInput{
+  .v-field__input,.el-input__wrapper{
+    border:2px solid rgb(var(--v-theme-error)) !important;
+    border-radius: 5px !important;
+    background: rgb(var(--v-theme-errorDisableInput)) !important;
+    -webkit-text-fill-color: rgb(var(--v-theme-commonRedColor)) !important;
+    color:rgb(var(--v-theme-commonRedColor)) !important;
+  }
+  .el-input__wrapper{
+    .el-input__inner{
+      -webkit-text-fill-color: rgb(var(--v-theme-commonRedColor)) !important;
+      color:rgb(var(--v-theme-commonRedColor)) !important;
+    }
+  }
+}
+
+.defaultTableList {
+  .el-table__row {
+    .el-table__cell {
+      border-color: black !important;
+      &:not(:first-child) {
+        border-color: rgb(var(--v-theme-defaultTaxtColor)) !important;
+      }
+    }
+  }
+
+  &.noIndex{
+    .el-table__row {
+      .el-table__cell {
+        &:not(:first-child) {
+          border-color: rgb(var(--v-theme-defaultTaxtColor)) !important;
+        }
+      }
+    }
+  }
+}
+
+//排期下拉選單走期顯示樣式
+.cueListArea .el-breadcrumb__inner {
+  color: #000 !important;
+}
+
+
+// 修改element ui datepicker 顏色 (年份預設當年度不標亮)
+.el-year-table td.today .cell {
+  color: var(--el-color-primary) !important;
+  font-weight:bold !important;
+}
+
+.el-year-table td.current:not(.disabled) .cell {
+  color: white !important;
+  font-weight:700 !important;
+}
+
+
+// 輸入區塊樣式
+.inputBox {
+  .el-form-item__label {
+    color: black !important;
+  }
+  .el-input__inner {
+    color: black !important;
+  }
+  .v-field__input {
+    background-color: white !important;
+    color: black !important;
+  }
+}
+
+// 修改輸入框提示字 tooltip 背景色
+.tooltip-background-color {
+  background-color: rgb(var(--v-theme-checkBoxBorderColor)) !important;
+}
+
+// 設定表格選取列的背景色/文字顏色
+.tableSelectColumnColor {
+  background: rgb(var(--v-theme-tableRowBgColor)) !important;
+  color: rgb(var(--v-theme-defaultTaxtColor)) !important;
+}
+
+// 設定表格選取框的背景色/文字顏色
+.checkTableList {
+  .el-checkbox__input .el-checkbox__inner {
+    border: 1px solid rgb(var(--v-theme-checkBoxBorderColor)) !important;
+
+  }
+  .el-checkbox__input.is-disabled .el-checkbox__inner {
+    background-color: darkgray !important;
+  }
+  .el-checkbox__input.is-disabled.is-checked .el-checkbox__inner {
+    background-color: rgb(var(--v-theme-defaultBgColor)) !important;
+    &::after {
+      border-color: rgb(var(--v-theme-defaultTaxtColor)) !important;
+    }
+  }
+  .el-checkbox__input.is-checked .el-checkbox__inner {
+    background-color: rgb(var(--v-theme-checkBoxBg)) !important;
+    &::after {
+      border-color: rgb(var(--v-theme-defaultBgColor))  !important;
+    }
+  }
+}
