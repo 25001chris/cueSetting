@@ -75,7 +75,7 @@ const router = useRouter();
 document.getElementsByTagName("html")[0].className = "dark";
 
 const linkTo = () => {
-  router.push("/");
+  router.push("/afterEvaluate");
 };
 
 const menuItems = ref([
