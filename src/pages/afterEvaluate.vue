@@ -1,13 +1,7 @@
 <template>
   <v-container>
     <v-row class="mt-10 ml-10">
-      <CommonButton
-        :button-type="'query'"
-        class="ma-2"
-        :to="{ name: '/afterEvaluateSetting' }"
-      >
-        搜尋
-      </CommonButton>
+      <CommonButton :button-type="'query'" class="ma-2"> 搜尋 </CommonButton>
     </v-row>
     <v-row class="mt-10 ml-10">
       <v-col cols="2">
@@ -74,7 +68,11 @@
           <el-table-column fixed label="操作" width="150" :align="'center'">
             <template #default="{ row }">
               <div style="display: inline-grid">
-                <CommonButton size="small" :button-type="'minor'">
+                <CommonButton
+                  size="small"
+                  :button-type="'minor'"
+                  :to="{ name: '/afterEvaluateSetting' }"
+                >
                   <v-icon icon="mdi-pencil"></v-icon>
                 </CommonButton>
               </div>

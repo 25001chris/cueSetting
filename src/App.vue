@@ -30,9 +30,6 @@
         <!-- <v-list-item link :to="{ name: '/' }"
           ><v-icon>mdi-pencil</v-icon>事後評估作業
         </v-list-item> -->
-        <v-list-item link :to="{ name: '/cue' }"
-          ><v-icon>mdi-pencil</v-icon>補CUE處理作業</v-list-item
-        >
         <!-- <v-list-item link><v-icon>mdi-pencil</v-icon>報表作業1</v-list-item>
         <v-list-item link><v-icon>mdi-pencil</v-icon>報表作業2</v-list-item>
         <v-list-item link
@@ -91,6 +88,11 @@ const menuItems = ref([
       { title: "數字匯入", link: "/numberImport" },
     ],
   },
+  {
+    title: "補CUE處理作業",
+    active: false,
+    subMenuItems: [{ title: "補CUE作業", link: "/cue" }],
+  },
 ]);
 
 const routerTitle = computed(() => {
@@ -103,9 +105,9 @@ const routerTitle = computed(() => {
     case "/numberImport":
       return "數字匯入";
     case "/cue":
-      return "補CUE處理作業";
+      return "補CUE作業";
     default:
-      return "事後評估作業";
+      return "事後評估維護";
   }
 });
 
