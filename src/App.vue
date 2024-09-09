@@ -46,8 +46,11 @@
       </v-navigation-drawer>
       <v-app-bar app>
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
+
         <v-app-bar-title>
-          <span class="mr-10" style="vertical-align: middle">補CUE DEMO</span>
+          <span class="mr-10" style="vertical-align: middle">{{
+            routerTitle
+          }}</span>
         </v-app-bar-title>
         <template #append>
           <div class="d-flex align-center font-weight-bold">
@@ -68,7 +71,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 //
@@ -89,6 +92,22 @@ const menuItems = ref([
     ],
   },
 ]);
+
+const routerTitle = computed(() => {
+  const title = router.currentRoute.value.name;
+  switch (title) {
+    case "/multiToRun":
+      return "排期多筆轉單";
+    case "/afterEvaluate":
+      return "事後評估維護";
+    case "/numberImport":
+      return "數字匯入";
+    case "/cue":
+      return "補CUE處理作業";
+    default:
+      return "事後評估作業";
+  }
+});
 
 onMounted(() => {
   linkTo();
