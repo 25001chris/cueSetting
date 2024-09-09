@@ -13,13 +13,6 @@ import { routes } from 'vue-router/auto-routes'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
-  // routes : [
-  //   {path: '/',component: () => import('@/pages/index.vue')},
-  //   {path: '/afterEvaluate',component: () => import('@/pages/afterEvaluate.vue')},
-  //   {path: '/afterEvaluateSetting',component: () => import('@/pages/afterEvaluateSetting.vue')},
-  //   {path: '/multiToRun', component: ()=> import('@/pages/multiToRun.vue')},
-  //   {path: '/cue', component: ()=> import('@/pages/cue.vue')},
-  // ]
 })
 
 
@@ -28,13 +21,16 @@ const router = createRouter({
 router.onError((err, to) => {
   if (err?.message?.includes?.('Failed to fetch dynamically imported module')) {
     if (!localStorage.getItem('vuetify:dynamic-reload')) {
+      console.log(0)
       console.log('Reloading page to fix dynamic import error')
       localStorage.setItem('vuetify:dynamic-reload', 'true')
       location.assign(to.fullPath)
     } else {
+      console.log(1)
       console.error('Dynamic import error, reloading page did not fix it', err)
     }
   } else {
+    console.log(2)
     console.error(err)
   }
 })
