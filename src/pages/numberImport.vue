@@ -1,14 +1,30 @@
 <template>
   <v-container>
+    <v-row class="mt-10 ml-10">
+      <CommonButton :button-type="'query'" class="ma-2" id="numberImport">
+        搜尋
+      </CommonButton>
+      <!-- <el-button class="text-editButton" id="numberImport">搜尋</el-button> -->
+    </v-row>
     <v-row class="ma-10">
-      <v-col cols="1">
-        <CommonTextField label-min-width="0" label="" />
+      <!-- <el-button class="text-editButton" id="numberImport">TEST</el-button> -->
+      <v-col>
+        <img
+          src="@/assets/componentDemo/numberImportTable.jpg"
+          alt="adjustment"
+        />
       </v-col>
-      <v-col cols="2">
-        <CommonTextField label-min-width="0" />
-      </v-col>
+      <!-- <v-col cols="2">
+        <img
+          src="@/assets/componentDemo/numberImportSubTable.jpg"
+          alt="adjustment"
+        />
+      </v-col> -->
     </v-row>
   </v-container>
+  <numberImport />
 </template>
-<script setup></script>
+<script setup>
+import numberImport from "@/components/afterEvaluate/numberImport.vue";
+</script>
 <style lang="scss" scoped></style>

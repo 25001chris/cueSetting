@@ -214,6 +214,7 @@ const baseClick = (event) => {
     }"
     :disabled="baseDisabled"
     @click="baseClick"
+    v-bind:="attrs"
   >
     <slot></slot>
   </v-btn>

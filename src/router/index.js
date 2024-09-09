@@ -9,10 +9,20 @@
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { routes } from 'vue-router/auto-routes'
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes,
+  routes
+  // routes : [
+  //   {path: '/',component: () => import('@/pages/index.vue')},
+  //   {path: '/afterEvaluate',component: () => import('@/pages/afterEvaluate.vue')},
+  //   {path: '/afterEvaluateSetting',component: () => import('@/pages/afterEvaluateSetting.vue')},
+  //   {path: '/multiToRun', component: ()=> import('@/pages/multiToRun.vue')},
+  //   {path: '/cue', component: ()=> import('@/pages/cue.vue')},
+  // ]
 })
+
+
 
 // Workaround for https://github.com/vitejs/vite/issues/11804
 router.onError((err, to) => {
@@ -30,6 +40,7 @@ router.onError((err, to) => {
 })
 
 router.isReady().then(() => {
+  console.log(routes)
   localStorage.removeItem('vuetify:dynamic-reload')
 })
 
