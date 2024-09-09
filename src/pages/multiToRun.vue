@@ -160,4 +160,12 @@ const multiToRunData = [
 :deep .el-table td.el-table__cell div {
   padding: 10px 15px !important;
 }
+
+:deep .el-checkbox__input.is-checked .el-checkbox__inner {
+  background-color: #409eff !important;
+  &::after {
+    border-color: white !important;
+    border-width: 2px !important;
+  }
+}
 </style>
