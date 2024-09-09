@@ -57,6 +57,7 @@
           :cell-style="{ padding: 0 }"
           @select="handleSelection"
           :header-cell-class-name="headerCellClass"
+          :row-class-name="selectMaterialClass"
         >
           <el-table-column prop="sort" label="序" width="40" />
           <el-table-column type="selection" selectable />
@@ -82,8 +83,22 @@ import CommonTextField from "@/components/shared/CommonTextField.vue";
 import CommonHtmlDatepicker from "@/components/shared/CommonHtmlDatepicker.vue";
 import CommonButton from "@/components/shared/CommonButton.vue";
 
+const selectList = ref([]);
+const selectMaterialClass = ({ row }) => {
+  const selectListData = selectList.value.filter(
+    (item) => item.scheduleId === row.scheduleId
+  );
+  if (selectListData.length > 0) {
+    return "bg-blue-lighten-4";
+  }
+};
+
 const headerCellClass = () => {
   return "bg-grey-lighten-3 center";
+};
+
+const handleSelection = (selection) => {
+  selectList.value = selection;
 };
 
 const andAfter = ref(false);
@@ -161,11 +176,11 @@ const multiToRunData = [
   padding: 10px 15px !important;
 }
 
-:deep .el-checkbox__input.is-checked .el-checkbox__inner {
-  background-color: #409eff !important;
-  &::after {
-    border-color: white !important;
-    border-width: 2px !important;
-  }
-}
+// :deep .el-checkbox__input.is-checked .el-checkbox__inner {
+//   background-color: #409eff !important;
+//   &::after {
+//     border-color: white !important;
+//     border-width: 2px !important;
+//   }
+// }
 </style>
