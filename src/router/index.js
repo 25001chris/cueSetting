@@ -6,7 +6,7 @@
  */
 
 // Composables
-import { createRouter, createWebHistory } from 'vue-router/auto'
+import { createRouter, createWebHashHistory } from 'vue-router/auto'
 import { routes } from 'vue-router/auto-routes'
 
 import multiToRun from '@/pages/multiToRun.vue'
@@ -46,7 +46,7 @@ const test = [
     component: NumberImport
   },
   {
-    path: '*',
+    path: '/*',
     redirect: '/afterEvaluate'
   },
   ...routes
@@ -54,7 +54,7 @@ const test = [
 
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes:test
 })
 
