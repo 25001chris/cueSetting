@@ -46,7 +46,7 @@ const test = [
     component: NumberImport
   },
   {
-    path: '/*',
+    path: '*',
     redirect: '/afterEvaluate'
   },
   ...routes
