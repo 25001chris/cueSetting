@@ -48,7 +48,8 @@ const test = [
   {
     path: '/*',
     redirect: '/afterEvaluate'
-  }
+  },
+  ...routes
 ]
 
 
