@@ -18,7 +18,12 @@
             />
           </v-col>
           <v-col cols="4">
-            <v-checkbox v-model="andAfter" class="float-left" hide-details>
+            <v-checkbox
+              v-model="andAfter"
+              class="float-left"
+              hide-details
+              style="height: 24px"
+            >
               <template #label>
                 <div>及以後</div>
               </template>

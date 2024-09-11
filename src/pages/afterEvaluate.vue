@@ -53,9 +53,9 @@
           </h5>
         </div>
       </v-col>
-      <v-col cols="9" class="text-red-lighten-2 text-end"> 共9筆</v-col>
+      <v-col cols="9" class="text-red-lighten-2 text-end pr-5"> 共9筆</v-col>
     </v-row>
-    <v-row class="ml-10 mr-10">
+    <v-row class="ml-10 mr-10 mt-0">
       <v-col cols="12">
         <el-table
           :data="multiToRunData"
