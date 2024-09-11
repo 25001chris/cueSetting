@@ -137,6 +137,7 @@
           :cell-style="{ padding: 0 }"
           @row-dblclick="openMaterialList"
           :style="{ height: settingVH2 }"
+          :row-style="{ cursor: 'pointer' }"
         >
           <el-table-column prop="programName" label="節目名稱">
           </el-table-column>
@@ -179,10 +180,13 @@
         <el-table
           :data="tableData3"
           :style="{ height: settingVH }"
+          :row-style="{ cursor: 'pointer' }"
           :cell-style="{ padding: 0 }"
           @row-dblclick="test2"
           @row-click="test0"
+          :row-key="(row) => row.id"
         >
+          <el-table-column fixed prop="id" label="序" width="50" />
           <el-table-column width="240" prop="item1" label="材料名稱" />
           <el-table-column width="240" prop="item2" label="篇名" />
           <el-table-column width="60" prop="item3" label="秒" />
@@ -252,6 +256,7 @@
         :data="tableData4"
         @row-dblclick="test3"
         :row-class-name="tableRowClassName"
+        :row-style="{ cursor: 'pointer' }"
         :cell-style="{ padding: 0 }"
       >
         <el-table-column width="240" prop="item1" label="材料名稱" />
@@ -292,17 +297,18 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref, watch, computed } from "vue";
 
 const radio1 = ref("Y");
 const radio2 = ref("All");
 const input1 = ref("");
 //const visible = ref(false);
-const drawer = ref(false);
+const drawer = computed(() => tableData4.value.length > 0);
 const drawer2 = ref(false);
 const settingVH = ref("64vh");
 const settingVH2 = ref("64vh");
 const dialogVisible = ref(false);
+const checked5 = ref(false);
 
 // const test = () => {
 //   drawer.value = false;
@@ -311,19 +317,29 @@ const dialogVisible = ref(false);
 
 const test0 = () => {
   if (tableData4.value.length > 0) {
-    drawer.value = true;
     settingVH.value = !drawer.value ? "64vh" : "52vh";
   }
 };
 
+const test2disabled = ref(true);
 const test2 = (row) => {
-  tableData4.value.push(row);
-  drawer.value = true;
-  settingVH.value = !drawer.value ? "64vh" : "52vh";
+  console.log(test2disabled.value);
+  if (test2disabled.value) {
+    test2disabled.value = false;
+    if (tableData4.value.filter((item) => item.id === row.id).length > 0) {
+      test2disabled.value = true;
+      return;
+    } else {
+      tableData4.value.push(row);
+      settingVH.value = !drawer.value ? "64vh" : "52vh";
+      setTimeout(() => {
+        test2disabled.value = true;
+      }, 500);
+    }
+  }
 };
 
 const test3 = (row) => {
-  console.log(row.index);
   tableData4.value.splice(row.index, 1);
 };
 
@@ -332,7 +348,6 @@ const tableRowClassName = ({ row, rowIndex }) => {
 };
 
 const closeDialogVisible = () => {
-  console.log("close");
   dialogVisible.value = false;
 };
 
@@ -642,6 +657,7 @@ const tableData2 = [
 
 const tableData3 = [
   {
+    id: 1,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -669,6 +685,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 2,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -696,6 +713,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 3,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -723,6 +741,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 4,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -750,6 +769,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 5,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -777,6 +797,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 6,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -804,6 +825,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 7,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -831,6 +853,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 8,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -858,6 +881,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 9,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -885,6 +909,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 10,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -912,6 +937,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 11,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -939,6 +965,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 12,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -966,6 +993,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 13,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -993,6 +1021,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 14,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -1020,6 +1049,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 15,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -1047,6 +1077,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 16,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -1074,6 +1105,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 17,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -1101,6 +1133,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 18,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -1128,6 +1161,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 19,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -1155,6 +1189,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 20,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -1182,6 +1217,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 21,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -1209,6 +1245,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 22,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -1236,6 +1273,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 23,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -1263,6 +1301,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 24,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -1290,6 +1329,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 25,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -1317,6 +1357,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 26,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -1344,6 +1385,7 @@ const tableData3 = [
     item25: "032800970002822024070741-1",
   },
   {
+    id: 27,
     item1: "7-11 飲料抽抽樂(SF204-14)",
     item2: "單/S1*H2補*RA",
     item3: "5",
@@ -1397,13 +1439,9 @@ const options = [
 ];
 
 watch(
-  () => tableData4.value,
+  () => drawer.value,
   (val) => {
-    console.log(val.length);
-    if (val.length == 0) {
-      drawer.value = false;
-      settingVH.value = !drawer.value ? "64vh" : "56vh";
-    }
+    settingVH.value = !val ? "64vh" : "56vh";
   },
   { deep: true },
   { immediate: true }
