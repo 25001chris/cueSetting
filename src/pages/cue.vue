@@ -184,7 +184,6 @@
           :cell-style="{ padding: 0 }"
           @row-dblclick="test2"
           @row-click="test0"
-          :row-key="(row) => row.id"
         >
           <el-table-column fixed prop="id" label="序" width="50" />
           <el-table-column width="240" prop="item1" label="材料名稱" />
