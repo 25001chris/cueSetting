@@ -83,15 +83,15 @@ const menuItems = ref([
     title: "事後評估作業",
     active: false,
     subMenuItems: [
-      { title: "排期多筆轉單", link: "/multiToRun" },
-      { title: "事後評估維護", link: "/afterEvaluate" },
-      { title: "數字匯入", link: "/numberImport" },
+      { title: "排期多筆轉單 QA3300M", link: "/multiToRun" },
+      { title: "事後評估維護 QA2100M", link: "/afterEvaluate" },
+      { title: `數字匯入 QA2603M`, link: "/numberImport" },
     ],
   },
   {
     title: "補CUE處理作業",
     active: false,
-    subMenuItems: [{ title: "補CUE作業", link: "/cue" }],
+    subMenuItems: [{ title: "補CUE作業 QA3000M", link: "/cue" }],
   },
 ]);
 
@@ -99,15 +99,15 @@ const routerTitle = computed(() => {
   const title = router.currentRoute.value.name;
   switch (title) {
     case "/multiToRun":
-      return "排期多筆轉單";
+      return "排期多筆轉單(QA3300M)";
     case "/afterEvaluate":
-      return "事後評估維護";
+      return "事後評估維護(QA2100M)";
     case "/numberImport":
-      return "數字匯入";
+      return "數字匯入(QA2603M)";
     case "/cue":
-      return "補CUE作業";
+      return "補CUE作業(QA3000M)";
     default:
-      return "事後評估維護";
+      return "事後評估維護(QA2100M)";
   }
 });
 

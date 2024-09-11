@@ -326,16 +326,12 @@ const test2 = (row) => {
   console.log(test2disabled.value);
   if (test2disabled.value) {
     test2disabled.value = false;
-    if (tableData4.value.filter((item) => item.id === row.id).length > 0) {
+
+    tableData4.value.push(row);
+    settingVH.value = !drawer.value ? "64vh" : "52vh";
+    setTimeout(() => {
       test2disabled.value = true;
-      return;
-    } else {
-      tableData4.value.push(row);
-      settingVH.value = !drawer.value ? "64vh" : "52vh";
-      setTimeout(() => {
-        test2disabled.value = true;
-      }, 500);
-    }
+    }, 500);
   }
 };
 
