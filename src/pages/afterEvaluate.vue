@@ -25,7 +25,7 @@
         <CommonTextField label-min-width="0" label="代理商／客戶" />
       </v-col>
       <v-col cols="2"
-        ><CommentSelect label-min-width="0" label="材料" />
+        ><CommonTextField label-min-width="0" label="材料" />
       </v-col>
       <v-col cols="2">
         <CommentSelect label-min-width="0" label="走期內" hide-details />
@@ -123,7 +123,6 @@
 import CommentSelect from "@/components/shared/CommonSelect.vue";
 import CommonTextField from "@/components/shared/CommonTextField.vue";
 import CommonButton from "@/components/shared/CommonButton.vue";
-import { mdiFileEditOutline, mdiDelete } from "@mdi/js";
 
 const headerCellClass = () => {
   return "bg-grey-lighten-3 center";
