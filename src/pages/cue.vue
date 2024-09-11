@@ -184,6 +184,7 @@
           :cell-style="{ padding: 0 }"
           @row-dblclick="test2"
           @row-click="test0"
+          :row-key="(row) => row.id"
         >
           <el-table-column fixed prop="id" label="序" width="50" />
           <el-table-column width="240" prop="item1" label="材料名稱" />
@@ -323,15 +324,18 @@ const test0 = () => {
 const test2disabled = ref(true);
 const test2 = (row) => {
   console.log(test2disabled.value);
-
   if (test2disabled.value) {
     test2disabled.value = false;
-    console.log(tableData4.value);
-    settingVH.value = !drawer.value ? "64vh" : "52vh";
-    setTimeout(() => {
-      tableData4.value.push(row);
+    if (tableData4.value.filter((item) => item.id === row.id).length > 0) {
       test2disabled.value = true;
-    }, 500);
+      return;
+    } else {
+      tableData4.value.push(row);
+      settingVH.value = !drawer.value ? "64vh" : "52vh";
+      setTimeout(() => {
+        test2disabled.value = true;
+      }, 500);
+    }
   }
 };
 
