@@ -324,12 +324,13 @@ const test0 = () => {
 const test2disabled = ref(true);
 const test2 = (row) => {
   console.log(test2disabled.value);
+
   if (test2disabled.value) {
     test2disabled.value = false;
-
-    tableData4.value.push(row);
+    console.log(tableData4.value);
     settingVH.value = !drawer.value ? "64vh" : "52vh";
     setTimeout(() => {
+      tableData4.value.push(row);
       test2disabled.value = true;
     }, 500);
   }
